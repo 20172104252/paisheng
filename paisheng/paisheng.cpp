@@ -51,6 +51,11 @@ public:
 			Day = Day - arr[Month - 1];
 			Month++;
 		}
+		if (Month > 12)
+		{
+			Month = Month - 12;
+			Years++;
+		}
 		CDate obj;
 	    obj.Setvalue(Years, Month, Day);
 		return obj;
@@ -78,8 +83,8 @@ public:
 int main()
 {
 	CDate NUM1, NUM2;
-	NUM1.Setvalue(2015, 2, 28);
-	NUM2.Setvalue(1, 1, 1);
+	NUM1.Setvalue(2015, 12, 1);
+	NUM2.Setvalue(1, 12, 31);
 	CDate NUM3;
 	NUM3 = NUM1 + NUM2;
 	NUM3.display();
