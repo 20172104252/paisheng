@@ -36,14 +36,8 @@ public:
 	CDate operator +(CDate temp)
 	{
 		int arr[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-		Month = Month + temp.Month;
 		Years = Years + temp.Years;
 		Day = Day + temp.Day;
-		if (Month > 12)
-		{
-			Month = Month - 12;
-			Years++;
-		}
 		if ((Years % 4 == 0 && Years % 100 != 0) || Years % 400 == 0)
 			arr[1] = 29;
 		if (Day > arr[Month - 1])
@@ -51,9 +45,10 @@ public:
 			Day = Day - arr[Month - 1];
 			Month++;
 		}
+		Month = Month + temp.Month;
 		if (Month > 12)
 		{
-			Month = Month - 12;
+			Month = Month % 13;
 			Years++;
 		}
 		CDate obj;
@@ -83,8 +78,8 @@ public:
 int main()
 {
 	CDate NUM1, NUM2;
-	NUM1.Setvalue(2015, 12, 1);
-	NUM2.Setvalue(1, 12, 31);
+	NUM1.Setvalue(0, 12, 31);
+	NUM2.Setvalue(0, 12, 1);
 	CDate NUM3;
 	NUM3 = NUM1 + NUM2;
 	NUM3.display();
