@@ -52,7 +52,7 @@ public:
 			Years++;
 		}
 		CDate obj;
-	    obj.Setvalue(Years, Month, Day);
+		obj.Setvalue(Years, Month, Day);
 		return obj;
 	}
 	static void tomorrow(CDate & temp)
@@ -75,6 +75,11 @@ public:
 
 	}
 };
+class CMYDate :public CDate
+{
+
+};
+
 int main()
 {
 	CDate NUM1, NUM2;
